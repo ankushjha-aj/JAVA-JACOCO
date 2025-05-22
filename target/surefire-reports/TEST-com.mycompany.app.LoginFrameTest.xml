@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.mycompany.app.LoginFrameTest" time="0.043" tests="2" errors="2" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.mycompany.app.LoginFrameTest" time="0.037" tests="2" errors="0" skipped="2" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -13,7 +13,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IN"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/23.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/ankushjha/Desktop/Opsbee/JACOCO/JAVA-JACOCO/target/surefire/surefirebooter-20250522144952643_3.jar /Users/ankushjha/Desktop/Opsbee/JACOCO/JAVA-JACOCO/target/surefire 2025-05-22T14-49-52_607-jvmRun1 surefire-20250522144952643_1tmp surefire_0-20250522144952643_2tmp"/>
+    <property name="sun.java.command" value="/Users/ankushjha/Desktop/Opsbee/JACOCO/JAVA-JACOCO/target/surefire/surefirebooter-20250522145308914_3.jar /Users/ankushjha/Desktop/Opsbee/JACOCO/JAVA-JACOCO/target/surefire 2025-05-22T14-53-08_877-jvmRun1 surefire-20250522145308914_1tmp surefire_0-20250522145308914_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/ankushjha/Desktop/Opsbee/JACOCO/JAVA-JACOCO/target/test-classes:/Users/ankushjha/Desktop/Opsbee/JACOCO/JAVA-JACOCO/target/classes:/Users/ankushjha/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.12.2/junit-jupiter-api-5.12.2.jar:/Users/ankushjha/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/ankushjha/.m2/repository/org/junit/platform/junit-platform-commons/1.12.2/junit-platform-commons-1.12.2.jar:/Users/ankushjha/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/ankushjha/.m2/repository/org/assertj/assertj-swing-junit/3.17.1/assertj-swing-junit-3.17.1.jar:/Users/ankushjha/.m2/repository/junit/junit/4.12/junit-4.12.jar:/Users/ankushjha/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/ankushjha/.m2/repository/org/assertj/assertj-swing/3.17.1/assertj-swing-3.17.1.jar:/Users/ankushjha/.m2/repository/org/assertj/assertj-core/3.17.2/assertj-core-3.17.2.jar:/Users/ankushjha/.m2/repository/org/easytesting/fest-util/1.2.5/fest-util-1.2.5.jar:/Users/ankushjha/.m2/repository/org/easytesting/fest-reflect/1.4.1/fest-reflect-1.4.1.jar:"/>
@@ -31,7 +31,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.headless" value="true"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/ankushjha/Desktop/Opsbee/JACOCO/JAVA-JACOCO/target/surefire/surefirebooter-20250522144952643_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/ankushjha/Desktop/Opsbee/JACOCO/JAVA-JACOCO/target/surefire/surefirebooter-20250522145308914_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="23.0.2"/>
@@ -60,32 +60,26 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="shouldShowSuccessOnValidLogin" classname="com.mycompany.app.LoginFrameTest" time="0.004">
-    <error message="Cannot invoke &quot;org.assertj.swing.fixture.FrameFixture.cleanUp()&quot; because &quot;this.window&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "org.assertj.swing.fixture.FrameFixture.cleanUp()" because "this.window" is null
-	at com.mycompany.app.LoginFrameTest.tearDown(LoginFrameTest.java:27)
+  <testcase name="shouldShowSuccessOnValidLogin" classname="com.mycompany.app.LoginFrameTest" time="0.0">
+    <skipped type="org.opentest4j.TestAbortedException"><![CDATA[org.opentest4j.TestAbortedException: Assumption failed: assumption is not false
+	at org.junit.jupiter.api.Assumptions.throwAssumptionFailed(Assumptions.java:321)
+	at org.junit.jupiter.api.Assumptions.assumeFalse(Assumptions.java:196)
+	at org.junit.jupiter.api.Assumptions.assumeFalse(Assumptions.java:147)
+	at com.mycompany.app.LoginFrameTest.setUp(LoginFrameTest.java:20)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	Suppressed: org.opentest4j.TestAbortedException: Assumption failed: assumption is not false
-		at org.junit.jupiter.api.Assumptions.throwAssumptionFailed(Assumptions.java:321)
-		at org.junit.jupiter.api.Assumptions.assumeFalse(Assumptions.java:196)
-		at org.junit.jupiter.api.Assumptions.assumeFalse(Assumptions.java:147)
-		at com.mycompany.app.LoginFrameTest.setUp(LoginFrameTest.java:20)
-		... 3 more
-]]></error>
+]]></skipped>
   </testcase>
-  <testcase name="shouldShowErrorOnInvalidLogin" classname="com.mycompany.app.LoginFrameTest" time="0.001">
-    <error message="Cannot invoke &quot;org.assertj.swing.fixture.FrameFixture.cleanUp()&quot; because &quot;this.window&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "org.assertj.swing.fixture.FrameFixture.cleanUp()" because "this.window" is null
-	at com.mycompany.app.LoginFrameTest.tearDown(LoginFrameTest.java:27)
+  <testcase name="shouldShowErrorOnInvalidLogin" classname="com.mycompany.app.LoginFrameTest" time="0.0">
+    <skipped type="org.opentest4j.TestAbortedException"><![CDATA[org.opentest4j.TestAbortedException: Assumption failed: assumption is not false
+	at org.junit.jupiter.api.Assumptions.throwAssumptionFailed(Assumptions.java:321)
+	at org.junit.jupiter.api.Assumptions.assumeFalse(Assumptions.java:196)
+	at org.junit.jupiter.api.Assumptions.assumeFalse(Assumptions.java:147)
+	at com.mycompany.app.LoginFrameTest.setUp(LoginFrameTest.java:20)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	Suppressed: org.opentest4j.TestAbortedException: Assumption failed: assumption is not false
-		at org.junit.jupiter.api.Assumptions.throwAssumptionFailed(Assumptions.java:321)
-		at org.junit.jupiter.api.Assumptions.assumeFalse(Assumptions.java:196)
-		at org.junit.jupiter.api.Assumptions.assumeFalse(Assumptions.java:147)
-		at com.mycompany.app.LoginFrameTest.setUp(LoginFrameTest.java:20)
-		... 3 more
-]]></error>
+]]></skipped>
   </testcase>
 </testsuite>

@@ -24,7 +24,9 @@ public class LoginFrameTest {
 
     @AfterEach
     public void tearDown() {
-        window.cleanUp();
+        if (window != null) {
+            window.cleanUp();
+        }
     }
 
     @Test

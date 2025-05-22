@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>App.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">my-app</a> &gt; <a href="index.source.html" class="el_package">com.mycompany.app</a> &gt; <span class="el_source">App.java</span></div><h1>App.java</h1><pre class="source lang-java linenums">package com.mycompany.app;
+
+import javax.swing.*;
+import java.awt.*;
+
+/**
+ * Hello world!
+ */
+public class App {
+
+    private static final String MESSAGE = &quot;Hello World!&quot;;
+
+<span class="fc" id="L13">    public App() {}</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L16">        SwingUtilities.invokeLater(() -&gt; new LoginFrame());</span>
+<span class="nc" id="L17">    }</span>
+
+    public String getMessage() {
+<span class="fc" id="L20">        return MESSAGE;</span>
+    }
+}
+
+<span class="fc" id="L24">class Authenticator {</span>
+    private static final String USERNAME = &quot;Ankush&quot;; // change as needed
+    private static final String PASSWORD = &quot;Ankush@123&quot;; // change as needed
+
+    public boolean authenticate(String username, String password) {
+<span class="fc bfc" id="L29" title="All 4 branches covered.">        return USERNAME.equals(username) &amp;&amp; PASSWORD.equals(password);</span>
+    }
+}
+
+class LoginFrame extends JFrame {
+    private JTextField usernameField;
+    private JPasswordField passwordField;
+    private JCheckBox showPasswordCheckBox;
+<span class="nc" id="L37">    private Authenticator authenticator = new Authenticator();</span>
+    private static final String USERNAME = &quot;Ankush&quot;; // change as needed
+
+<span class="nc" id="L40">    public LoginFrame() {</span>
+<span class="nc" id="L41">        setTitle(&quot;Login Page&quot;);</span>
+<span class="nc" id="L42">        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L43">        setSize(350, 200);</span>
+<span class="nc" id="L44">        setLocationRelativeTo(null);</span>
+<span class="nc" id="L45">        setLayout(new BorderLayout());</span>
+<span class="nc" id="L46">        showLoginPanel();</span>
+<span class="nc" id="L47">        setVisible(true);</span>
+<span class="nc" id="L48">    }</span>
+
+    private void showLoginPanel() {
+<span class="nc" id="L51">        JPanel panel = new JPanel(new GridLayout(4, 2, 10, 10));</span>
+<span class="nc" id="L52">        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));</span>
+
+<span class="nc" id="L54">        panel.add(new JLabel(&quot;Username:&quot;));</span>
+<span class="nc" id="L55">        usernameField = new JTextField();</span>
+<span class="nc" id="L56">        usernameField.setName(&quot;usernameField&quot;);</span>
+<span class="nc" id="L57">        panel.add(usernameField);</span>
+
+<span class="nc" id="L59">        panel.add(new JLabel(&quot;Password:&quot;));</span>
+<span class="nc" id="L60">        passwordField = new JPasswordField();</span>
+<span class="nc" id="L61">        passwordField.setName(&quot;passwordField&quot;);</span>
+<span class="nc" id="L62">        panel.add(passwordField);</span>
+
+<span class="nc" id="L64">        panel.add(new JLabel());</span>
+<span class="nc" id="L65">        showPasswordCheckBox = new JCheckBox(&quot;Show Password&quot;);</span>
+<span class="nc" id="L66">        showPasswordCheckBox.addActionListener(e -&gt; togglePasswordVisibility());</span>
+<span class="nc" id="L67">        panel.add(showPasswordCheckBox);</span>
+
+<span class="nc" id="L69">        JButton loginButton = new JButton(&quot;Login&quot;);</span>
+<span class="nc" id="L70">        loginButton.setName(&quot;loginButton&quot;);</span>
+<span class="nc" id="L71">        loginButton.addActionListener(e -&gt; login());</span>
+<span class="nc" id="L72">        panel.add(new JLabel()); // empty cell</span>
+<span class="nc" id="L73">        panel.add(loginButton);</span>
+
+<span class="nc" id="L75">        getContentPane().removeAll();</span>
+<span class="nc" id="L76">        add(panel, BorderLayout.CENTER);</span>
+<span class="nc" id="L77">        revalidate();</span>
+<span class="nc" id="L78">        repaint();</span>
+<span class="nc" id="L79">    }</span>
+
+    private void showWelcomePanel() {
+<span class="nc" id="L82">        JPanel panel = new JPanel(new BorderLayout());</span>
+<span class="nc" id="L83">        panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));</span>
+<span class="nc" id="L84">        JLabel welcomeLabel = new JLabel(&quot;Welcome, &quot; + USERNAME + &quot;!&quot;, SwingConstants.CENTER);</span>
+<span class="nc" id="L85">        welcomeLabel.setFont(new Font(&quot;Arial&quot;, Font.BOLD, 16));</span>
+<span class="nc" id="L86">        panel.add(welcomeLabel, BorderLayout.CENTER);</span>
+
+<span class="nc" id="L88">        JButton logoutButton = new JButton(&quot;Logout&quot;);</span>
+<span class="nc" id="L89">        logoutButton.addActionListener(e -&gt; showLoginPanel());</span>
+<span class="nc" id="L90">        JPanel buttonPanel = new JPanel();</span>
+<span class="nc" id="L91">        buttonPanel.add(logoutButton);</span>
+<span class="nc" id="L92">        panel.add(buttonPanel, BorderLayout.SOUTH);</span>
+
+<span class="nc" id="L94">        getContentPane().removeAll();</span>
+<span class="nc" id="L95">        add(panel, BorderLayout.CENTER);</span>
+<span class="nc" id="L96">        revalidate();</span>
+<span class="nc" id="L97">        repaint();</span>
+<span class="nc" id="L98">    }</span>
+
+    private void togglePasswordVisibility() {
+<span class="nc bnc" id="L101" title="All 2 branches missed.">        if (showPasswordCheckBox.isSelected()) {</span>
+<span class="nc" id="L102">            passwordField.setEchoChar((char) 0);</span>
+        } else {
+<span class="nc" id="L104">            passwordField.setEchoChar('•');</span>
+        }
+<span class="nc" id="L106">    }</span>
+
+    private void login() {
+<span class="nc" id="L109">        String username = usernameField.getText();</span>
+<span class="nc" id="L110">        String password = new String(passwordField.getPassword());</span>
+<span class="nc bnc" id="L111" title="All 2 branches missed.">        if (authenticator.authenticate(username, password)) {</span>
+<span class="nc" id="L112">            JOptionPane.showMessageDialog(this, &quot;You are successfully logged into the system!&quot;, &quot;Success&quot;, JOptionPane.INFORMATION_MESSAGE);</span>
+<span class="nc" id="L113">            showWelcomePanel();</span>
+        } else {
+<span class="nc" id="L115">            JOptionPane.showMessageDialog(this, &quot;Invalid username or password.&quot;, &quot;Error&quot;, JOptionPane.ERROR_MESSAGE);</span>
+        }
+<span class="nc" id="L117">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
