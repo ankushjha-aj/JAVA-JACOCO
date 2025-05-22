@@ -2,7 +2,6 @@ package com.mycompany.app;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 /**
  * Hello world!
@@ -22,12 +21,21 @@ public class App {
     }
 }
 
+class Authenticator {
+    private static final String USERNAME = "Ankush"; // change as needed
+    private static final String PASSWORD = "Ankush@123"; // change as needed
+
+    public boolean authenticate(String username, String password) {
+        return USERNAME.equals(username) && PASSWORD.equals(password);
+    }
+}
+
 class LoginFrame extends JFrame {
     private JTextField usernameField;
     private JPasswordField passwordField;
     private JCheckBox showPasswordCheckBox;
+    private Authenticator authenticator = new Authenticator();
     private static final String USERNAME = "Ankush"; // change as needed
-    private static final String PASSWORD = "Ankush@123"; // change as needed
 
     public LoginFrame() {
         setTitle("Login Page");
@@ -45,10 +53,12 @@ class LoginFrame extends JFrame {
 
         panel.add(new JLabel("Username:"));
         usernameField = new JTextField();
+        usernameField.setName("usernameField");
         panel.add(usernameField);
 
         panel.add(new JLabel("Password:"));
         passwordField = new JPasswordField();
+        passwordField.setName("passwordField");
         panel.add(passwordField);
 
         panel.add(new JLabel());
@@ -57,6 +67,7 @@ class LoginFrame extends JFrame {
         panel.add(showPasswordCheckBox);
 
         JButton loginButton = new JButton("Login");
+        loginButton.setName("loginButton");
         loginButton.addActionListener(e -> login());
         panel.add(new JLabel()); // empty cell
         panel.add(loginButton);
@@ -97,7 +108,7 @@ class LoginFrame extends JFrame {
     private void login() {
         String username = usernameField.getText();
         String password = new String(passwordField.getPassword());
-        if (USERNAME.equals(username) && PASSWORD.equals(password)) {
+        if (authenticator.authenticate(username, password)) {
             JOptionPane.showMessageDialog(this, "You are successfully logged into the system!", "Success", JOptionPane.INFORMATION_MESSAGE);
             showWelcomePanel();
         } else {

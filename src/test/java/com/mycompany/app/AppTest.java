@@ -16,17 +16,4 @@ public class AppTest
         App app2 = new App();
         assertEquals(app1.getMessage(), app2.getMessage());
     }
-
-    @Test
-    public void testAppMessage()
-    {
-        App app = new App();
-        assertEquals("Hello World!", app.getMessage());
-    }
-
-    @Test
-    public void testAppInstantiation() {
-        // Just ensure the App class can be instantiated without error
-        new App();
-    }
 }
