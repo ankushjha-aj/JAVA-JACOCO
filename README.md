@@ -1,43 +1,69 @@
-# JAVA-JACOCO
+# Updates and Configuration Details
 
-This is a simple Java Maven project demonstrating how to use [JaCoCo](https://www.jacoco.org/jacoco/) for code coverage and [GitHub Actions](https://github.com/features/actions) for CI/CD automation.
+## 1. Updated Existing `pom.xml` to Add JaCoCo Plugin
 
-## Project Structure
+Add the following to your `pom.xml` plugins section:
 
+```xml
+<!-- Jacoco Plugin -->
+<plugin>
+  <groupId>org.jacoco</groupId>
+  <artifactId>jacoco-maven-plugin</artifactId>
+  <version>0.8.10</version>
+  <executions>
+    <execution>
+      <goals>
+        <goal>prepare-agent</goal>
+      </goals>
+    </execution>
+    <execution>
+      <id>report</id>
+      <phase>test</phase>
+      <goals>
+        <goal>report</goal>
+      </goals>
+    </execution>
+  </executions>
+</plugin>
+<!-- Jacoco Plugin -->
 ```
-JAVA-JACOCO/
-├── src/
-│   ├── main/java/com/example/App.java
-│   └── test/java/com/example/AppTest.java
-├── pom.xml
-└── .github/workflows/ci.yml
+
+*(See lines 74-93 in your `pom.xml`)*
+
+---
+
+## 2. Created a Workflow File Inside `.github/workflows`
+
+Create a file (e.g., `.github/workflows/ci.yml`) with the following content:
+
+```yaml
+name: Java CI with Maven and JaCoCo
+
+on:
+  push:
+    branches: [main, test]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build with Maven
+        run: mvn clean verify
+
+      - name: Upload JaCoCo coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-report
+          path: target/site/jacoco/
 ```
 
-## Features
-- Java 17
-- JUnit 5 for testing
-- JaCoCo for code coverage
-- GitHub Actions for CI and coverage artifact upload
-
-## Getting Started
-
-### Build and Test Locally
-
-```
-mvn clean verify
-```
-- This will compile the code, run tests, and generate a JaCoCo coverage report in `target/site/jacoco/index.html`.
-
-### GitHub Actions CI
-- On every push to the `main` branch, GitHub Actions will:
-  1. Check out the code
-  2. Set up Java 17
-  3. Build and test with Maven
-  4. Generate a JaCoCo coverage report
-  5. Upload the coverage report as an artifact
-
-You can download the coverage report from the "Artifacts" section of the workflow run on GitHub.
-
-## References
-- [JaCoCo Maven Plugin Documentation](https://www.eclemma.org/jacoco/trunk/doc/maven.html)
-- [GitHub Actions: Upload Artifact](https://github.com/actions/upload-artifact)
+This workflow will generate JaCoCo reports, upload them to GitHub Actions artifacts, and allow you to download and unzip the report. Open `index.html` inside the artifact to view the JaCoCo coverage report.

@@ -70,6 +70,8 @@
           </execution>
         </executions>
       </plugin>
+
+      <!-- Jacoco Plugin -->
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
@@ -89,6 +91,8 @@
           </execution>
         </executions>
       </plugin>
+      <!-- Jacoco Plugin -->
+      
     </plugins>
   </build>
 </project>
