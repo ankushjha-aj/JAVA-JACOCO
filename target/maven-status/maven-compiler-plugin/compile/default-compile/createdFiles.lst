@@ -1,2 +1,3 @@
 com/mycompany/app/App.class
+com/mycompany/app/Authenticator.class
 com/mycompany/app/LoginFrame.class
